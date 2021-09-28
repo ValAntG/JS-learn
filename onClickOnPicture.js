@@ -11,7 +11,7 @@ const addIsOpenToLightbox = (imageInfo) => {
   lightboxJS.classList.add('is-open');
 };
 
-export const onClickHandler = (e) => {
+const onClickHandler = (e) => {
   e.preventDefault();
 
   addIsOpenToLightbox(e.target);
@@ -22,16 +22,18 @@ const removeLightBox = () => {
   lightboxJS.classList.remove('is-open');
 };
 
-export const onCloseHandler = (e) => {
+const onCloseHandler = (e) => {
   e.preventDefault();
 
   removeLightBox();
 };
 
-export const onPushEsc = (e) => {
+const onPushEsc = (e) => {
   e.preventDefault();
 
   if (e.keyCode === 27) {
     removeLightBox();
   }
 };
+
+export { onClickHandler, onCloseHandler, onPushEsc };
