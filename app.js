@@ -8,6 +8,7 @@ import {
 
 const gallery = document.querySelector('.js-gallery');
 const gall = document;
+
 const items = makesGalleryItem(galleryItems);
 gallery.append(...items);
 
