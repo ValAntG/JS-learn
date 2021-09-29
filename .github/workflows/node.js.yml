@@ -20,7 +20,10 @@ jobs:
         cache: 'npm'
     - run: npm install
     - name: ESlint
-      run: ./node_modules/.bin/eslint *.js
+      uses: wearerequired/lint-action@v1
+      with:
+        eslint: true
+        prettier: true
     - name: Commit changes
       if: always()
       uses: stefanzweifel/git-auto-commit-action@v4.1.2
