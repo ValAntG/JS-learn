@@ -1,9 +1,22 @@
-import setAttributes from './setAttributes.js';
+const setAttributes = (el, attrs) => {
+  for (let key in attrs) {
+    el.setAttribute(key, attrs[key]);
+  }
+  return el;
+};
 
-const addListElement = (e) => setAttributes(e, { className: 'gallery__item' });
+const listObject = () => {
+  const object = document.createElement('li');
 
-const addImage = (e, item) =>
-  setAttributes(e, {
+  setAttributes(object, { className: 'gallery__item' });
+
+  return object;
+};
+
+const ImageObject = (item) => {
+  const object = document.createElement('img');
+
+  setAttributes(object, {
     className: 'gallery__image',
     src: item.preview,
     data: item.original,
@@ -11,18 +24,25 @@ const addImage = (e, item) =>
     width: '340',
   });
 
-const addLink = (e, item) =>
-  setAttributes(e, {
+  return object;
+};
+
+const linkObject = (item) => {
+  const object = document.createElement('a');
+
+  setAttributes(object, {
     className: 'gallery__link',
     href: item.original,
   });
 
-const createObject = (item) => {
-  const liEl = addListElement(document.createElement('li'));
-  const imgEl = addImage(document.createElement('img'), item);
-  const aEl = addLink(document.createElement('a'), item);
+  return object;
+};
 
-  aEl.appendChild(imgEl);
+const createObject = (item) => {
+  const liEl = listObject();
+  const aEl = linkObject(item);
+
+  aEl.appendChild(ImageObject(item));
   liEl.appendChild(aEl);
   liEl.appendChild(document.createElement('li'));
 
